@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Hunger Hub</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">Hunger<span>Hub</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="tracking.html">Track</a></li>
+      <li><a href="collectors.html">Collectors</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="login.html" class="nav-btn">Login</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<header class="form-hero">
+  <div class="container">
+    <h1>Get in touch</h1>
+    <p>Questions, partnerships, or box requests — we'd like to hear from you.</p>
+  </div>
+</header>
+
+<section class="form-section">
+  <div class="container two-col contact-layout">
+
+    <div class="col-text contact-info">
+      <h2>Contact Details</h2>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-label">Email</span>
+          <a href="mailto:hello@hungerhub.org">hello@hungerhub.org</a>
+        </li>
+        <li>
+          <span class="contact-label">Phone</span>
+          <a href="tel:+911234567890">+91 12345 67890</a>
+        </li>
+        <li>
+          <span class="contact-label">Office</span>
+          <span>Bengaluru, Karnataka, India</span>
+        </li>
+      </ul>
+
+      <h3>Want to host a box?</h3>
+      <p>Restaurants, event spaces, and residential communities can request a smart box installation through this form.</p>
+    </div>
+
+    <div class="contact-form-wrap">
+      <form id="contactForm" class="hh-form" novalidate>
+
+        <div class="form-group">
+          <label for="contactName">Full Name</label>
+          <input type="text" id="contactName" name="contactName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactMobile">Mobile Number</label>
+          <input type="tel" id="contactMobile" name="contactMobile" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactEmail">Email <span class="optional-tag">(optional)</span></label>
+          <input type="email" id="contactEmail" name="contactEmail">
+        </div>
+
+        <div class="form-group">
+          <label for="contactSubject">Subject</label>
+          <select id="contactSubject" name="contactSubject" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="general">General Inquiry</option>
+            <option value="box-request">Request a Box</option>
+            <option value="partnership">Partnership</option>
+            <option value="issue">Report an Issue</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="contactMessage" rows="5" required></textarea>
+        </div>
+
+        <div id="contactError" class="form-error" hidden></div>
+        <div id="contactSuccess" class="form-success" hidden>Message sent. We'll get back to you soon.</div>
+
+        <button type="submit" class="btn-primary btn-block">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-content">
+    <p>&copy; 2026 Hunger Hub. Built for a hunger-free, waste-free city.</p>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

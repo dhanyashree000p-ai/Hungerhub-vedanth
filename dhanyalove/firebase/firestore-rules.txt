@@ -1,0 +1,82 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- Helper functions ----------
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    function isCollector() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/collectors/$(request.auth.uid));
+    }
+
+    // ---------- users ----------
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ---------- donations ----------
+    match /donations/{donationId} {
+      allow read: if isSignedIn();
+
+      // Auth required to create a donation, and it must belong to the creator.
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+
+      // Donor can edit only their own donation.
+      // Collectors can update status (e.g. marking COLLECTED).
+      // Admin has full access.
+      allow update: if isOwner(resource.data.userId) || isCollector() || isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // ---------- boxes ----------
+    match /boxes/{boxId} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ---------- collectors ----------
+    match /collectors/{collectorId} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(collectorId);
+
+      // Collector can update their own record (points/collectedCount).
+      // Admin has full access.
+      allow update: if isOwner(collectorId) || isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // ---------- foodHistory ----------
+    match /foodHistory/{historyId} {
+      allow read: if isSignedIn();
+
+      // Written by donors (on creation) and collectors (on status updates).
+      allow create: if isSignedIn();
+      allow update: if isCollector() || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ---------- default deny ----------
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

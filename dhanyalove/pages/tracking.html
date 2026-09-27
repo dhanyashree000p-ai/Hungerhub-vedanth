@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Donation | Hunger Hub</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">Hunger<span>Hub</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="tracking.html" class="active">Track</a></li>
+      <li><a href="collectors.html">Collectors</a></li>
+      <li><a href="login.html" class="nav-btn">Login</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<header class="form-hero">
+  <div class="container">
+    <h1>Track your donation</h1>
+    <p>Enter a donation ID to see its current stage and time remaining.</p>
+  </div>
+</header>
+
+<section class="form-section">
+  <div class="container form-narrow">
+    <form id="trackForm" class="hh-form hh-form-inline" novalidate>
+      <div class="form-group">
+        <label for="donationId">Donation ID</label>
+        <input type="text" id="donationId" name="donationId" placeholder="e.g. HH-24831" required>
+      </div>
+      <button type="submit" class="btn-primary">Track</button>
+    </form>
+    <div id="trackError" class="form-error" hidden></div>
+  </div>
+</section>
+
+<section class="tracking-result" id="trackingResult" hidden>
+  <div class="container">
+
+    <div class="tracking-summary">
+      <div class="tracking-id">
+        <span class="label">Donation ID</span>
+        <span id="resDonationId" class="value">—</span>
+      </div>
+      <div class="tracking-status">
+        <span class="label">Current Stage</span>
+        <span id="resStatus" class="status-badge">—</span>
+      </div>
+      <div class="tracking-time">
+        <span class="label">Time Remaining</span>
+        <span id="resTimeRemaining" class="value">—</span>
+      </div>
+      <div class="tracking-box">
+        <span class="label">Assigned Box</span>
+        <span id="resBox" class="value">—</span>
+      </div>
+    </div>
+
+    <ol class="progress-tracker" id="progressTracker">
+      <li data-stage="AVAILABLE_FOR_HUMANS" class="stage">
+        <span class="stage-dot"></span>
+        <span class="stage-label">Available for Humans</span>
+      </li>
+      <li data-stage="ANIMAL_FEED_STAGE" class="stage">
+        <span class="stage-dot"></span>
+        <span class="stage-label">Animal Feeding Stage</span>
+      </li>
+      <li data-stage="BIOGAS_STAGE" class="stage">
+        <span class="stage-dot"></span>
+        <span class="stage-label">Biogas Stage</span>
+      </li>
+      <li data-stage="COLLECTED" class="stage">
+        <span class="stage-dot"></span>
+        <span class="stage-label">Collected</span>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-content">
+    <p>&copy; 2026 Hunger Hub. Built for a hunger-free, waste-free city.</p>
+  </div>
+</footer>
+
+<script src="../firebase/firebase-config.js" type="module"></script>
+<script src="../js/tracking.js" type="module"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

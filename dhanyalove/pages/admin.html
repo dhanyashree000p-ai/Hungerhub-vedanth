@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Hunger Hub</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<nav class="navbar admin-navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-logo">Hunger<span>Hub</span> <span class="admin-tag">Admin</span></a>
+    <ul class="nav-links">
+      <li><a href="admin.html" class="active">Dashboard</a></li>
+      <li><a href="#" id="logoutBtn">Log Out</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<header class="form-hero admin-hero">
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Overview and controls for donations, boxes, users, and collectors.</p>
+  </div>
+</header>
+
+<section class="dashboard-section">
+  <div class="container">
+
+    <div class="stat-cards admin-stat-cards">
+      <div class="stat-card">
+        <span class="stat-value" id="statTotalDonations">0</span>
+        <span class="stat-label">Total Donations</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="statActiveDonations">0</span>
+        <span class="stat-label">Active Donations</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="statHumanCount">0</span>
+        <span class="stat-label">Human Consumption Count</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="statAnimalCount">0</span>
+        <span class="stat-label">Animal Feed Count</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="statBiogasCount">0</span>
+        <span class="stat-label">Biogas Collections</span>
+      </div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" data-tab="users">Manage Users</button>
+      <button class="admin-tab-btn" data-tab="boxes">Manage Boxes</button>
+      <button class="admin-tab-btn" data-tab="donations">Manage Donations</button>
+      <button class="admin-tab-btn" data-tab="collectors">Manage Collectors</button>
+    </div>
+
+    <!-- USERS -->
+    <div class="admin-tab-panel" id="tab-users">
+      <div class="table-wrap">
+        <table class="hh-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>Country</th>
+              <th>Role</th>
+              <th>Created</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BOXES -->
+    <div class="admin-tab-panel" id="tab-boxes" hidden>
+      <button class="btn-primary btn-sm" id="addBoxBtn">+ Add Box</button>
+      <div class="table-wrap">
+        <table class="hh-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Capacity</th>
+              <th>Available Slots</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="boxesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DONATIONS -->
+    <div class="admin-tab-panel" id="tab-donations" hidden>
+      <div class="table-wrap">
+        <table class="hh-table">
+          <thead>
+            <tr>
+              <th>Donation ID</th>
+              <th>Food Name</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Box</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="donationsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- COLLECTORS -->
+    <div class="admin-tab-panel" id="tab-collectors" hidden>
+      <div class="table-wrap">
+        <table class="hh-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>Points</th>
+              <th>Collected Count</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="collectorsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-content">
+    <p>&copy; 2026 Hunger Hub. Built for a hunger-free, waste-free city.</p>
+  </div>
+</footer>
+
+<script src="../firebase/firebase-config.js" type="module"></script>
+<script src="../js/dashboard.js" type="module"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+@media (max-width: 900px) {
+  .two-col,
+  .impact-grid,
+  .sdg-grid,
+  .stat-cards,
+  .admin-stat-cards,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .two-col.reverse .col-visual,
+  .two-col.reverse .col-text {
+    order: unset;
+  }
+  .tracking-summary { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease;
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .nav-links.open { max-height: 400px; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 14px 24px;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-100);
+  }
+  .nav-btn { margin: 12px 24px; }
+
+  .form-row { grid-template-columns: 1fr; }
+  .hh-form-inline { flex-direction: column; align-items: stretch; }
+
+  .flow-track { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); align-self: center; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .auth-card { padding: 24px; }
+  .tracking-summary { grid-template-columns: 1fr; }
+}
