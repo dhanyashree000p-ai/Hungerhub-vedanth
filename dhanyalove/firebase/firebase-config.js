@@ -31,14 +31,14 @@ import {
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
-// TODO: replace with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "hungerhub-xxxx.firebaseapp.com",
-  projectId: "hungerhub-xxxx",
-  storageBucket: "hungerhub-xxxx.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCZ436zp7PsdjMxY6SYK6P6veVBkYNlx_0",
+  authDomain: "hunger-9ba04.firebaseapp.com",
+  projectId: "hunger-9ba04",
+  storageBucket: "hunger-9ba04.firebasestorage.app",
+  messagingSenderId: "919290768003",
+  appId: "1:919290768003:web:f97426361e5cc2b33089b6",
+  measurementId: "G-FRD0MSPEG1"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -68,5 +68,3 @@ export {
   uploadBytes,
   getDownloadURL
 };
-
-com.hungerhub.app
